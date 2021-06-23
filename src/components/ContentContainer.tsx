@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 
 function ContentContainer({ children }: any): JSX.Element {
     return (
-        <Container className="mt-5 content-container">
+        <Container className="mt-3 content-container">
             { children }
         </Container>
     );

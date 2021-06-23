@@ -1,22 +1,22 @@
 import React from "react";
-import { Button, Form, FormControl, Nav, Navbar, NavDropdown, Container } from "react-bootstrap";
+import { Nav, Navbar, Container } from "react-bootstrap";
 import {
-    Link,
+    NavLink
 } from "react-router-dom";
 
-function Header() {
+function Header(): JSX.Element {
     return (
         <Navbar bg="light" expand="lg">
             <Container>
-                <Navbar.Brand href="#home">Age of Empires</Navbar.Brand>
+                <Navbar.Brand href="/">Age of Empires</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Item>
-                            <Link className="nav-link" to="/">Home</Link>
+                            <NavLink className="nav-link" exact activeClassName="active" to="/">Home</NavLink>
                         </Nav.Item>
                         <Nav.Item>
-                            <Link className="nav-link" to="/units">Units</Link>
+                            <NavLink className="nav-link" activeClassName="active" to="/units">Units</NavLink>
                         </Nav.Item>
                     </Nav>
                 </Navbar.Collapse>
