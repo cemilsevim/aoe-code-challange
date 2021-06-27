@@ -7,7 +7,6 @@ import middleware, { sagaMiddleware } from './middleware';
 
 const composeEnhancer = compose;
 
-/* istanbul ignore next */
 export const configStore = (initialState: any = {}, additionalMiddleware: Middleware[] = []) => {
   const store: Store = createStore(
     combineReducers(reducers),
