@@ -1,7 +1,6 @@
 import React from "react";
-import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import ContentContainer from "../../components/ContentContainer";
-import PageTitle from "../../components/PageTitle";
 
 function UnitsDetail(): JSX.Element {
     const columns = ['ID', 'Name', 'Description', 'Min. Required Age', 'Wood Cost', 'Food Cost', 'Gold Cost', 'Build Time', 'Reload Time', 'Hit Points', 'Attack', 'Accuracy'];

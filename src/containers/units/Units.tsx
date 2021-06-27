@@ -1,10 +1,25 @@
 import React from "react";
+import { useEffect } from "react";
 import { Form, Button, ButtonGroup } from "react-bootstrap";
 import ContentContainer from "../../components/ContentContainer";
 import PageTitle from "../../components/PageTitle";
+import { useDispatch, useSelector } from "react-redux";
+import * as UnitAction from "../../actions/units";
 import UnitsTable from "../../components/UnitsTable";
+import { StoreState } from "../../types";
 
-function Units(): JSX.Element {
+
+function Units(props: any): JSX.Element {
+    const dispatch = useDispatch();
+    const units = useSelector((state: StoreState) => state.units.data);
+    
+    // fetch units
+    useEffect(function() {
+        dispatch({
+            type: UnitAction.ActionTypes.UNITS_FETCH_REQUEST,
+        })
+    }, []);
+
     return (
         <ContentContainer>
             <PageTitle>Units</PageTitle>
@@ -47,7 +62,7 @@ function Units(): JSX.Element {
                     </Form.Group>
                 </div>
             </div>
-            <UnitsTable />
+            <UnitsTable units={units}/>
         </ContentContainer>
     );
 }

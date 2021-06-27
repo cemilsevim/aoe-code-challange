@@ -7,15 +7,19 @@ import {
   Switch
 } from "react-router-dom";
 import AppContainer from "./containers/App";
+import { Provider } from 'react-redux';
+import { configStore } from './store';
+
+const { persistor, store } = configStore();
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <Router>
       <Switch>
         <Route path="/" component={AppContainer} />
       </Switch>
     </Router>
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
