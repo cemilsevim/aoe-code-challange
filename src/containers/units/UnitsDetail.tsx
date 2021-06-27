@@ -56,7 +56,7 @@ function UnitsDetail(props: any): JSX.Element {
                                     <Card.Text> {unitDetail.data?.age} </Card.Text>
                                 </React.Fragment>
                                 {
-                                    Object.keys((unitDetail.data as any).cost).map((cost_name, key) => (
+                                    unitDetail.data?.cost && Object.keys((unitDetail.data as any).cost).map((cost_name, key) => (
                                     <React.Fragment key={key}>
                                         <Card.Title>{cost_name} Cost</Card.Title>
                                         <Card.Text> {unitDetail.data?.cost[cost_name]} </Card.Text>
