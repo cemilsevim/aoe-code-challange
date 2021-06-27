@@ -13,6 +13,11 @@ export interface UnitsFiltersState {
 }
 
 export interface UnitsState {
+    detail: {
+        requested: boolean;
+        errorMessage?: string;
+        data?: Unit,
+    },
     data: Unit[],
     filteredData: Unit[],
     filters: UnitsFiltersState,

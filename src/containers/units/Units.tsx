@@ -7,9 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import * as UnitAction from "../../actions/units";
 import UnitsTable from "../../components/UnitsTable";
 import { StoreState, UnitsCostsFilterState } from "../../types";
+import { Unit } from "../../types/unit";
+import { useHistory } from "react-router-dom";
 
 
 function Units(props: any): JSX.Element {
+    const history = useHistory();
     const dispatch = useDispatch();
     const units = useSelector((state: StoreState) => state.units);
     const unitsFilteredData = units.filteredData;
@@ -27,6 +30,10 @@ function Units(props: any): JSX.Element {
             type: UnitAction.ActionTypes.FETCH_REQUEST,
         });
     }, []);
+
+    const onClickRow = function(unit: Unit) {
+        history.push(`/units/${unit.id}`);
+    };
 
     const filterEvents = {
         ages: {
@@ -93,7 +100,7 @@ function Units(props: any): JSX.Element {
                     </Form.Group>
                 </div>
             </div>
-            <UnitsTable units={unitsFilteredData}/>
+            <UnitsTable onClickRow={(unit: Unit) => onClickRow(unit)} units={unitsFilteredData}/>
         </ContentContainer>
     );
 }

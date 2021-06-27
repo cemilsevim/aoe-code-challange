@@ -16,7 +16,7 @@ function UnitsTable(props: any): JSX.Element {
             <tbody>
                 {
                     props.units && props.units.map((unit: Unit, key: number) => (
-                        <tr key={key}>
+                        <tr key={key} onClick={() => props.onClickRow(unit)}>
                             <td>{unit.id}</td>
                             <td>{unit.name}</td>
                             <td>{unit.age}</td>

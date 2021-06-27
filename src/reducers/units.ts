@@ -1,7 +1,11 @@
 import { ActionTypes } from '../actions/units';
 import { UnitsCostsFilterState, UnitsFiltersState, UnitsState } from '../types';
+import { Unit } from '../types/unit';
 
 export const unitsState: UnitsState = {
+    detail: {
+        requested: false,
+    },
     data: [],
     filteredData: [],
     filters: {
@@ -39,6 +43,36 @@ export const reducer = (state = unitsState, action: any) => {
                 ...state,
                 data: action.payload,
                 filteredData: action.payload,
+            };
+        }
+
+        case ActionTypes.FETCH_DETAIL_REQUEST: {
+            return {
+                ...state,
+                detail: {
+                    requested: false,
+                    errorMessage: null,
+                },
+            };
+        }
+
+        case ActionTypes.FETCH_DETAIL_SUCCESS: {
+            return {
+                ...state,
+                detail: {
+                    requested: true,
+                    data: action.payload,
+                },
+            };
+        }
+
+        case ActionTypes.FETCH_DETAIL_FAIL: {
+            return {
+                ...state,
+                detail: {
+                    requested: true,
+                    errorMessage: action.payload.message,
+                }
             };
         }
 
